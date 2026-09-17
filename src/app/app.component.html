@@ -1,0 +1,33 @@
+<div class="container">
+  <!-- SMALL COMPACT HEADER -->
+  <header class="compact-header">
+    <div class="pkg-brand">
+      <span class="pkg-icon">📊</span>
+      <h1 class="pkg-name">ngx-modern-pivot-table</h1>
+      <span class="pkg-badge">v1.0.2</span>
+    </div>
+    <div class="pkg-meta">
+      <span class="install-pill">
+        <code>npm i ngx-modern-pivot-table</code>
+      </span>
+    </div>
+  </header>
+
+  <!-- PIVOT TABLE COMPONENT -->
+  <div class="pivot-wrapper">
+    <ngx-pivot-table
+      [data]="data"
+      [rows]="rows"
+      [cols]="cols"
+      [vals]="vals"
+      [aggregatorName]="aggregator"
+      theme="modern"
+      height="calc(100vh - 84px)"
+      width="100%"
+      [showUI]="true"
+      [showRowTotals]="true"
+      [showColTotals]="true"
+      [showGrandTotal]="true">
+    </ngx-pivot-table>
+  </div>
+</div>
