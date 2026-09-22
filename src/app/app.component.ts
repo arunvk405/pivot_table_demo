@@ -20,8 +20,8 @@ export interface DatasetPreset {
 })
 export class AppComponent implements OnInit {
   // Pivot Table Initial Configuration
-  rows: string[] = ['Region', 'Category'];
-  cols: string[] = ['Quarter'];
+  rows: string[] = ['Region', 'CustomerSegment', 'Month', 'Year', 'SalesRep', 'PaymentMode'];
+  cols: string[] = ['Quarter', 'Category', 'SubCategory'];
   vals: string[] = ['Revenue'];
   aggregator = 'Sum';
   theme: 'modern' | 'dark' | 'compact' | 'default' = 'modern';
