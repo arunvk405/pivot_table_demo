@@ -1,33 +1,72 @@
-<div class="container">
-  <!-- SMALL COMPACT HEADER -->
-  <header class="compact-header">
-    <div class="pkg-brand">
-      <span class="pkg-icon">📊</span>
-      <h1 class="pkg-name">ngx-modern-pivot-table</h1>
-      <span class="pkg-badge">v1.0.2</span>
+﻿<div class="demo-container">
+  <!-- TOP COMPACT HEADER -->
+  <header class="demo-header">
+    <div class="header-left">
+      <div class="pkg-brand">
+        <span class="pkg-icon">⚡</span>
+        <h1 class="pkg-name">ngx-modern-pivot-table</h1>
+        <span class="pkg-badge">v1.0.3</span>
+      </div>
+      <div class="perf-tag">
+        <span class="pulse-dot"></span>
+        <span class="perf-text">Zero-Lag Drag & Drop &bull; {{ recordsCount | number }} Records Active</span>
+      </div>
     </div>
-    <div class="pkg-meta">
-      <span class="install-pill">
-        <code>npm i ngx-modern-pivot-table</code>
-      </span>
+
+    <div class="header-right">
+      <!-- DATASET SELECTOR PILLS -->
+      <div class="dataset-switcher">
+        <span class="switcher-label">Dataset:</span>
+        <div class="preset-buttons">
+          <button
+            *ngFor="let p of presets"
+            type="button"
+            class="btn-preset"
+            [class.active]="selectedPresetId === p.id"
+            (click)="selectPreset(p.id)"
+            [title]="p.description">
+            {{ p.badge }}
+          </button>
+        </div>
+      </div>
+
+      <!-- THEME SELECTOR -->
+      <div class="theme-switcher">
+        <select class="theme-select" [(ngModel)]="theme">
+          <option value="modern">Modern Theme</option>
+          <option value="dark">Dark Theme</option>
+          <option value="compact">Compact Theme</option>
+          <option value="default">Classic Theme</option>
+        </select>
+      </div>
+
+      <div class="pkg-meta">
+        <span class="install-pill">
+          <code>npm i ngx-modern-pivot-table</code>
+        </span>
+      </div>
     </div>
   </header>
 
   <!-- PIVOT TABLE COMPONENT -->
-  <div class="pivot-wrapper">
+  <main class="pivot-main-card">
     <ngx-pivot-table
       [data]="data"
       [rows]="rows"
       [cols]="cols"
       [vals]="vals"
       [aggregatorName]="aggregator"
-      theme="modern"
-      height="calc(100vh - 84px)"
+      [theme]="theme"
+      [pageSize]="pageSize"
+      [pagination]="true"
+      height="calc(100vh - 86px)"
       width="100%"
       [showUI]="true"
       [showRowTotals]="true"
       [showColTotals]="true"
-      [showGrandTotal]="true">
+      [showGrandTotal]="true"
+      (ready)="onPivotReady($event)"
+      (configChange)="onConfigChange($event)">
     </ngx-pivot-table>
-  </div>
+  </main>
 </div>
